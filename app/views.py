@@ -6,9 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import news_post_form, login_form, register_form
 from .models import news_post
 import logging
+from .constants import departments
 
 def home_view(request):
-    return render(request, 'app/home.html')
+    return render(request, 'app/home.html', { "cards": departments })
 
 @login_required
 def news_post_create_view(request):
