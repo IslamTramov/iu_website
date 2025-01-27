@@ -109,7 +109,7 @@ body:has(.home-container):not(:has(.open)) {
 .card {
   text-decoration: none!important;
   padding: 30px;
-  max-width: 30vw;
+  width: 30vw;
   height: min(380px, 50vh);
   background-color: #3f3f3f;
 }
