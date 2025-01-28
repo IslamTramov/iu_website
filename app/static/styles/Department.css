@@ -60,6 +60,10 @@
   flex-direction: column;
 }
 
+.container img {
+  width: min(100vw, 1262px);
+}
+
 .about-block img {
   max-width: min(90vw, 458px)!important;
 }
