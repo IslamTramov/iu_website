@@ -123,6 +123,7 @@ body:has(.home-container):not(:has(.open)) {
 .card .main-info img {
   margin-left: auto;
   padding-left: 10px;
+  width: fit-content;
 }
 
 .card * {
