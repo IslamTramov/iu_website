@@ -79,6 +79,7 @@ body:has(.home-container):not(:has(.open)) {
   bottom: 55px;
   cursor: pointer;
   transition: filter .4s;
+  width: fit-content;
 }
 
 #scroller:hover {
