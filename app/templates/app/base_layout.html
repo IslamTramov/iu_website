@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/static/styles/Timer.css">
     <link rel="stylesheet" href="/static/styles/MainPage.css">
     <link rel="stylesheet" href="/static/styles/Council.css">
+    <link rel="stylesheet" href="/static/styles/News.css">
     <script src="/static/scripts/Navbar.js"></script>
     <script src="/static/scripts/index.js"></script>
     <link rel="icon" href="/static/images/bmstu_logo_light.svg">
@@ -122,9 +123,9 @@
             </li>
   
             {% if user.is_authenticated %}
-            <a href="" class="nav-link" role="button">Выйти</a>
+            <a href="/logout" class="nav-link" role="button">Выйти</a>
             {% else %}
-            <a href="" class="nav-link" role="button">Войти</a>
+            <a href="/login" class="nav-link" role="button">Войти</a>
             {% endif %}
   
           </ul>
@@ -205,9 +206,9 @@
             </li>
   
             {% if user.is_authenticated %}
-            <a href="" class="nav-link" role="button">Выйти</a>
+            <a href="/logout" class="nav-link" role="button">Выйти</a>
             {% else %}
-            <a href="" class="nav-link" role="button">Войти</a>
+            <a href="/login" class="nav-link" role="button">Войти</a>
             {% endif %}
   
           </ul>

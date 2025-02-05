@@ -112,7 +112,13 @@ body:has(.home-container):not(:has(.open)) {
   padding: 30px;
   width: 30vw;
   height: min(380px, 50vh);
-  background-color: #3f3f3f;
+  background-color: #fff;
+  border: none!important;
+  box-shadow: 0 2px 10px rgba(125, 143, 179, 0.15);
+}
+
+.card .card-arrow {
+  filter: invert(0%) sepia(9%) saturate(6612%) hue-rotate(84deg) brightness(0%) contrast(105%);
 }
 
 .card .main-info {
@@ -127,7 +133,7 @@ body:has(.home-container):not(:has(.open)) {
 }
 
 .card * {
-  color: white;
+  color: #1a1a19;
 }
 
 .card h2 {
@@ -137,6 +143,7 @@ body:has(.home-container):not(:has(.open)) {
 .card .description {
   margin-top: auto;
   font-size: 18px;
+  color: #a2a2a2;
 }
 
 .partners-block {

@@ -3,33 +3,16 @@
 {% block title %} Новости {% endblock %}
 
 {% block content %}
-<h1 class="text-center">Новости</h1>
-<table class="table table-bordered table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th>Id</th>
-      <th>Заголовок</th>
-      <th>Текст</th>
-      <th>Автор</th>
-      <th>Время создания</th>
-      <th>Действие</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for news_post in news_posts %}
-    <tr>
-      <td>{{ news_post.id }}</td>
-      <td>{{ news_post.title }}</td>
-      <td>{{ news_post.text }}</td>
-      <td>{{ news_post.author_id }}</td>
-      <td>{{ news_post.created_date }}</td>
-
-      <td>
-        <a href="{% url 'news_post_update' news_post.id %}" class="btn btn-warning">Изменить</a>
-        <a href="{% url 'news_post_delete' news_post.id %}" class="btn btn-danger">Удалить</a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<h1 class="text-center news-title">Новости</h1> <!-- id, title, text, author_id, created_date -->
+<h2 class="text-center news-description">Здесь мы публикуем новости о жизни нашего факультета</h2>
+{% for news_post in news_posts %}
+<div class="post">
+  <img src="/static/images/news.jpg"> <!-- TODO: добавить news_post.cover_url -->
+  <div class="info">
+    <div class="title">{{ news_post.title }}</div>
+    <div class="text">{{ news_post.text }}</div>
+    <div class="caption">{{ news_post.created_date }}</div>
+  </div>
+</div>
+{% endfor %}
 {% endblock %}
