@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -30,6 +30,12 @@ def news_posts_view(request):
     news_posts = news_post.objects.all()
     logging.warning('news post view')
     return render(request, 'app/news/news_posts.html', {'news_posts': news_posts})
+
+
+def news_post_detail_view(request, id):
+    post = get_object_or_404(news_post, id=id)
+    return render(request, 'app/news/news_post_detail.html', {'news_post': post })
+
 
 def news_post_update_view(request, id):
     post = news_post.objects.get(id=id)

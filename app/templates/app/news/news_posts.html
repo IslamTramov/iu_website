@@ -9,7 +9,11 @@
 <div class="post">
   <img src="/static/images/news.jpg"> <!-- TODO: добавить news_post.cover_url -->
   <div class="info">
-    <div class="title">{{ news_post.title }}</div>
+    <div class="title">
+      <a href="{% url 'news_post_detail' news_post.id %}">
+        {{ news_post.title }}
+      </a>
+    </div>
     <div class="text">{{ news_post.text }}</div>
     <div class="caption">{{ news_post.created_date }}</div>
   </div>
