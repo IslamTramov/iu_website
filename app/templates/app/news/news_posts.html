@@ -7,7 +7,9 @@
 <h2 class="text-center news-description">Здесь мы публикуем новости о жизни нашего факультета</h2>
 {% for news_post in news_posts %}
 <div class="post">
-  <img src="/static/images/news.jpg"> <!-- TODO: добавить news_post.cover_url -->
+  {% if news_post.image %}
+    <img src="{{ news_post.image.url }}"> 
+  {% endif %}
   <div class="info">
     <div class="title">
       <a href="{% url 'news_post_detail' news_post.id %}">
@@ -15,7 +17,8 @@
       </a>
     </div>
     <div class="text">{{ news_post.text }}</div>
-    <div class="caption">{{ news_post.created_date }}</div>
+    <div class="caption">{{ news_post.creation_date|date:"d.m.Y H:i"}}</div>
+    <div class="caption">{{ news_post.author.username }}</div>
   </div>
 </div>
 {% endfor %}

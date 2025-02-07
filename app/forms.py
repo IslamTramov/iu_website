@@ -10,6 +10,7 @@ class news_post_form(forms.ModelForm):
             'id': 'ID',
             'title': 'Заголовок',
             'text': 'Текст',
+            'image': 'Изображение',
             'author_id': 'Автор',
             'creation_date': 'Дата создания',
         }
@@ -17,6 +18,7 @@ class news_post_form(forms.ModelForm):
             'id': forms.TextInput(attrs={'placeholder': 'id', 'class': 'form-control'}),
             'title': forms.TextInput(attrs={'placeholder': 'Заголовок', 'class': 'form-control'}),
             'text': forms.TextInput(attrs={'placeholder': 'Текст статьи', 'class': 'form-control'}),
+            'image': forms.FileInput(attrs={'id': 'image_field'}),
             'author_id': forms.TextInput(attrs={'placeholder': 'Автор', 'class': 'form-control'}),
             'creation_date': forms.DateTimeInput(attrs={'placeholder': 'test_placeholder', 'class': 'form-control'}),
         }

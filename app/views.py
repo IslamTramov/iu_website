@@ -16,7 +16,7 @@ def news_post_create_view(request):
     form = news_post_form()
 
     if request.method == 'POST':
-        form = news_post_form(request.POST)
+        form = news_post_form(request.POST, request.FILES)
         
         if form.is_valid():
             form.save()
