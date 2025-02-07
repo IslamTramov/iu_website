@@ -28,7 +28,7 @@ def news_post_create_view(request):
 
 
 def news_posts_view(request):
-    news_posts = news_post.objects.all()
+    news_posts = news_post.objects.all().order_by('creation_date__date', '-creation_date__time')
 
     paginator = Paginator(news_posts, 5)
     page = request.GET.get('page')
