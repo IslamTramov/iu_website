@@ -10,6 +10,7 @@
     <div class="text">{{ news_post.text }}</div>
     <div class="caption">{{ news_post.creation_date }}</div>
     <div class="caption">{{ news_post.author.username }}</div>
+    <img src="{{ news_post.author.avatar.url }}">
   </div>
 </div>
 {% endblock %}

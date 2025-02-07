@@ -19,6 +19,7 @@
     <div class="text">{{ news_post.text }}</div>
     <div class="caption">{{ news_post.creation_date|date:"d.m.Y H:i"}}</div>
     <div class="caption">{{ news_post.author.username }}</div>
+    <img src="{{ news_post.author.avatar.url }}">
   </div>
 </div>
 

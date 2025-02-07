@@ -5,7 +5,7 @@ import uuid
 # Create your models here.
 
 class custom_user(AbstractUser):
-    avatar_url = models.CharField(blank=True, null=True)
+    avatar = models.ImageField(blank=True, upload_to='user_avatars')
 
     def __str__(self):
         return self.username
