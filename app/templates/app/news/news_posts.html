@@ -21,5 +21,19 @@
     <div class="caption">{{ news_post.author.username }}</div>
   </div>
 </div>
+
 {% endfor %}
+
+{% if news_posts.has_previous %}
+  <a href="?page=1">&laquo First</a>
+  <a href="?page={{ news_posts.previous_page_number }}">Previous</a>
+{% endif %}
+
+Page {{ news_posts.number }} of {{ news_posts.paginator.num_pages }}
+
+{% if news_posts.has_next %}
+  <a href="?page={{ news_posts.next_page_number }}">Next</a>
+  <a href="?page={{ news_posts.paginator.num_pages }}">Last &raquo</a>
+{% endif %}
+
 {% endblock %}

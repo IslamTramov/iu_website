@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 from .forms import news_post_form, login_form, register_form
@@ -28,8 +29,18 @@ def news_post_create_view(request):
 
 def news_posts_view(request):
     news_posts = news_post.objects.all()
-    logging.warning('news post view')
-    return render(request, 'app/news/news_posts.html', {'news_posts': news_posts})
+
+    paginator = Paginator(news_posts, 5)
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'app/news/news_posts.html', {'news_posts': posts})
 
 
 def news_post_detail_view(request, id):
