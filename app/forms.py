@@ -5,22 +5,16 @@ from .models import news_post, custom_user
 class news_post_form(forms.ModelForm):
     class Meta:
         model = news_post
-        fields = '__all__'
+        fields = ('title', 'text', 'image')
         labels = {
-            'id': 'ID',
             'title': 'Заголовок',
             'text': 'Текст',
             'image': 'Изображение',
-            'author_id': 'Автор',
-            'creation_date': 'Дата создания',
         }
         widgets = {
-            'id': forms.TextInput(attrs={'placeholder': 'id', 'class': 'form-control'}),
             'title': forms.TextInput(attrs={'placeholder': 'Заголовок', 'class': 'form-control'}),
             'text': forms.TextInput(attrs={'placeholder': 'Текст статьи', 'class': 'form-control'}),
             'image': forms.FileInput(attrs={'id': 'image_field'}),
-            'author_id': forms.TextInput(attrs={'placeholder': 'Автор', 'class': 'form-control'}),
-            'creation_date': forms.DateTimeInput(attrs={'placeholder': 'test_placeholder', 'class': 'form-control'}),
         }
 
 

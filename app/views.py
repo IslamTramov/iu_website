@@ -6,7 +6,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 from .forms import news_post_form, login_form, register_form
 from .models import news_post
-import logging
 from .constants import departments
 
 def home_view(request):
@@ -20,8 +19,9 @@ def news_post_create_view(request):
         form = news_post_form(request.POST, request.FILES)
         
         if form.is_valid():
-            form.save()
-            # logger.warning(f'created new news_post: {form}')
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
             return redirect('news_posts')
 
     return render(request, 'app/news/news_post_form.html', {'form': form})
