@@ -16,25 +16,28 @@
         {{ news_post.title }}
       </a>
     </div>
-    <div class="text">{{ news_post.text }}</div>
+    <div class="text">{{ news_post.text|truncatechars:80 }}</div>
     <div class="caption">{{ news_post.creation_date|date:"d.m.Y H:i"}}</div>
     <div class="caption">{{ news_post.author.username }}</div>
-    <img src="{{ news_post.author.avatar.url }}">
   </div>
 </div>
 
 {% endfor %}
 
 {% if news_posts.has_previous %}
-  <a href="?page=1">&laquo First</a>
-  <a href="?page={{ news_posts.previous_page_number }}">Previous</a>
+  <div style="gap:15px;display:flex;padding:15px 0px;">
+    <a href="?page=1">&laquo First</a>
+    <a href="?page={{ news_posts.previous_page_number }}">Previous</a>
+  </div>
 {% endif %}
 
-Page {{ news_posts.number }} of {{ news_posts.paginator.num_pages }}
+<div class="page-counter">Page {{ news_posts.number }} of {{ news_posts.paginator.num_pages }}</div>
 
 {% if news_posts.has_next %}
-  <a href="?page={{ news_posts.next_page_number }}">Next</a>
-  <a href="?page={{ news_posts.paginator.num_pages }}">Last &raquo</a>
+  <div style="gap:15px;display:flex;padding:15px 0px;">
+    <a href="?page={{ news_posts.next_page_number }}">Next</a>
+    <a href="?page={{ news_posts.paginator.num_pages }}">Last &raquo</a>
+  </div>
 {% endif %}
 
 {% endblock %}

@@ -1,16 +1,23 @@
 {% extends "app/base_layout.html" %}
 
 {% block content %}
-<div class="post">
-  {% if news_post.image %}
-    <img src="{{ news_post.image.url }}">
-  {% endif %}
-  <div class="info">
+<div class="detailed-post-outer">
+  <div class="navigator">
+    <img
+      class="back-button"
+      src="/static/images/arrow_right.svg"
+      onClick="javascript:history.back();"
+    >
+    <span class="caption">Новости</span>
+  </div>
+  <div class="detailed-post">
     <div class="title">{{ news_post.title }}</div>
+    {% if news_post.image %}
+      <img src="{{ news_post.image.url }}">
+    {% endif %}
     <div class="text">{{ news_post.text }}</div>
     <div class="caption">{{ news_post.creation_date }}</div>
-    <div class="caption">{{ news_post.author.username }}</div>
-    <img src="{{ news_post.author.avatar.url }}">
+    <div class="username">{{ news_post.author.username }}</div>
   </div>
 </div>
 {% endblock %}

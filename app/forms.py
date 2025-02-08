@@ -13,7 +13,7 @@ class news_post_form(forms.ModelForm):
         }
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Заголовок', 'class': 'form-control'}),
-            'text': forms.TextInput(attrs={'placeholder': 'Текст статьи', 'class': 'form-control'}),
+            'text': forms.Textarea(attrs={'placeholder': 'Текст статьи', 'class': 'form-control'}),
             'image': forms.FileInput(attrs={'id': 'image_field'}),
         }
 

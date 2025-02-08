@@ -6,7 +6,7 @@
 
 .news-description {
   font-size: 24px!important;
-  padding-bottom: 90px!important;
+  padding-bottom: 40px!important;
   font-weight: 400!important;
 }
 
@@ -43,7 +43,19 @@
   font-weight: 600;
 }
 
+.page-counter {
+  padding-top: 15px;
+}
+
 @media screen and (max-width: 450px) {
+
+  .news-title {
+    font-size: 30px!important;
+  }
+  
+  .news-description {
+    font-size: 20px!important;
+  }
 
   .post {
     flex-direction: column;
