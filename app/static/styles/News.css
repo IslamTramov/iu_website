@@ -26,6 +26,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .post .title {
@@ -47,6 +48,58 @@
   padding-top: 15px;
 }
 
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.author-info .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+}
+
+.author-info .after {
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  background-color: rgba(0, 0, 0, .6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-delete-confirmation {
+  width: min(100vw, 500px);
+  padding: 30px 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.post-delete-confirmation h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.post-delete-confirmation form {
+  gap: 30px;
+}
+
+.post-delete-confirmation form * {
+  width: min(40vw, 200px);
+}
+
 @media screen and (max-width: 450px) {
 
   .news-title {
@@ -63,6 +116,10 @@
 
   .post img {
     width: 100%;
+  }
+
+  .post-delete-confirmation h1 {
+    font-size: 24px;
   }
 
 }
