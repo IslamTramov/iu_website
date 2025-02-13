@@ -42,20 +42,26 @@
 
 {% endfor %}
 
-{% if news_posts.has_previous %}
-  <div style="gap:15px;display:flex;padding:15px 0px;">
-    <a href="?page=1">&laquo First</a>
-    <a href="?page={{ news_posts.previous_page_number }}">Previous</a>
-  </div>
-{% endif %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if news_posts.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ news_posts.previous_page_number }}">Назад</a>
+      </li>
+    {% endif %}
 
-<div class="page-counter">Page {{ news_posts.number }} of {{ news_posts.paginator.num_pages }}</div>
+    {% for page_number in news_posts.paginator.page_range %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_number }}">{{page_number}}</a>
+    </li>
+    {% endfor %}
 
-{% if news_posts.has_next %}
-  <div style="gap:15px;display:flex;padding:15px 0px;">
-    <a href="?page={{ news_posts.next_page_number }}">Next</a>
-    <a href="?page={{ news_posts.paginator.num_pages }}">Last &raquo</a>
-  </div>
-{% endif %}
+    {% if news_posts.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ news_posts.next_page_number }}">Вперед</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
 
 {% endblock %}
