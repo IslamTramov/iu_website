@@ -1,0 +1,95 @@
+.council {
+  text-align: start!important;
+  max-width: min(760px, 100vw)!important;
+}
+
+.council p {
+  font-size: 20px;
+}
+
+.council p:first-of-type {
+  padding: 60px 0px;
+}
+
+.council li {
+  font-size: 16px;
+  list-style-position: inside;
+}
+
+.council hr {
+  width: min(760px, 90vw);
+  height: 1px;
+}
+
+.council hr:nth-of-type(n+2) {
+  margin: 75px 0px;
+}
+
+.council ol li {
+  font-size: 20px;
+}
+
+.council ol {
+  padding: 20px 0px;
+}
+
+.main-list p {
+  padding: 0px!important;
+  margin-bottom: 0px!important;
+}
+
+.council h1 {
+  font-size: 64px;
+  font-weight: 600;
+  padding-top: 40px;
+  padding-bottom: 75px;
+}
+
+.council h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 60px;
+}
+
+.main-list {
+  counter-reset: main-counter;
+}
+
+.main-list > li {
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.main-list > li > span::before {
+  counter-increment: main-counter;
+  content: counter(main-counter) ".\00A0";
+  display: inline-block;     
+}
+
+.main-list > li > p::before {
+  counter-increment: main-counter;
+  content: counter(main-counter) ".\00A0";
+  display: inline-block;
+}
+
+@media screen and (max-width: 994px) {
+  
+  .council p {
+    font-size: 16px;
+  }
+
+  .council h1 {
+    font-size: 30px;
+    padding-bottom: 50px;
+  }
+
+  .council h3 {
+    font-size: 24px;
+  }
+
+  .council ol li {
+    font-size: 16px;
+  }
+
+}

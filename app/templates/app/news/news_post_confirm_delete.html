@@ -3,10 +3,14 @@
 {% block title %} Удаление новости {% endblock %}
 
 {% block content %}
-<h1 class="text-center">Вы точно хотите удалить новость?</h1>
-<form method="post" class="text-center">
-  {% csrf_token %}
-  <button type="submit" class="btn btn-danger">Да</button>
-  <a href="{% url 'news_posts' %}" class="btn btn-secondary">Закрыть</a>
-</form>
+<div class="overlay">
+  <div class="post-delete-confirmation">
+    <h1 class="text-center">Вы точно хотите удалить новость?</h1>
+    <form method="post" class="text-center">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Да</button>
+      <a href="{% url 'news_posts' %}" class="btn btn-secondary">Закрыть</a>
+    </form>
+  </div>
+</div>
 {% endblock %}

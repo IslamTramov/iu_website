@@ -3,15 +3,10 @@
 {% block title %}Форма новости {% endblock %}
 
 {% block content %}
-<h1 class="text-center">Форма новости</h1>
-<form method="POST" class="jumbotron">
+<h1 class="text-center form-title">Форма новости</h1>
+<form method="POST" enctype="multipart/form-data" class="post-form jumbotron">
   {% csrf_token %}
   {{form}}
-  <!-- <p>Заголовок:</p> -->
-  <!-- {{form.title}} -->
-  <!-- <p>Текст:</p> -->
-  <!-- {{form.text}} -->
-
   <button class="btn btn-success btn-block" type="submit">Сохранить</button>
 </form>
 

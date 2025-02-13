@@ -1,0 +1,125 @@
+.news-title {
+  font-size: 42px!important;
+  font-weight: 600!important;
+  padding-bottom: 40px!important;
+}
+
+.news-description {
+  font-size: 24px!important;
+  padding-bottom: 40px!important;
+  font-weight: 400!important;
+}
+
+.post {
+  padding: 25px 0px;
+  display: flex;
+  gap: 40px;
+  width: min(760px, 87vw);
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.post img {
+  width: 190px;
+}
+
+.post .info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.post .title {
+  font-weight: 600;
+  font-size: 16px; 
+}
+
+.post .text {
+  font-size: 12px;
+}
+
+.post .caption {
+  font-size: 10px;
+  color: rgba(0, 0, 0, .5);
+  font-weight: 600;
+}
+
+.page-counter {
+  padding-top: 15px;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.author-info .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+}
+
+.author-info .after {
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  background-color: rgba(0, 0, 0, .6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-delete-confirmation {
+  width: min(100vw, 500px);
+  padding: 30px 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.post-delete-confirmation h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.post-delete-confirmation form {
+  gap: 30px;
+}
+
+.post-delete-confirmation form * {
+  width: min(40vw, 200px);
+}
+
+@media screen and (max-width: 450px) {
+
+  .news-title {
+    font-size: 30px!important;
+  }
+  
+  .news-description {
+    font-size: 20px!important;
+  }
+
+  .post {
+    flex-direction: column;
+  }
+
+  .post img {
+    width: 100%;
+  }
+
+  .post-delete-confirmation h1 {
+    font-size: 24px;
+  }
+
+}

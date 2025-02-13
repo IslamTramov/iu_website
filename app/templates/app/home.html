@@ -3,8 +3,45 @@
 {% block title %} Сайт ИУ {% endblock %}
 
 {% block content %}
-<div class="jumbotron text-center">
-  <h1 class="display-4">Домашняя страница</h1>
-  <hr class="my-4">
+<div class="home-container">
+  <div class="title-screen">
+    <div class="caption">МГТУ</div>
+    <div class="maintitle">Факультет ИУ</div>
+    <img id="scroller" src="/static/images/arrow_down.svg" alt="arrow icon">
+  </div>
+  <div class="info-block">
+    <h1 class="subtitle">Кафедры</h1>
+    <div class="cards">
+      {% for card in cards %}
+      <a class="card" href="{% url card.id %}">
+        <div class="main-info">
+          <h2>{{ card.title }}</h2>
+          <img class="card-arrow" src="/static/images/arrow_right.svg">
+        </div>
+        <div class="description">{{ card.description }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="partners-block">
+    <h1 class="subtitle">Наши выпускники работают в</h1>
+    <div class="partners-list">
+      <div class="partner">
+        <img src="/static/images/partners/sber.jpg">
+      </div>
+      <div class="partner">
+        <img src="/static/images/partners/croc.png">
+      </div>
+      <div class="partner">
+        <img src="/static/images/partners/vk.png">
+      </div>
+      <div class="partner">
+        <img src="/static/images/partners/yandex.png">
+      </div>
+      <div class="partner">
+        <img src="/static/images/partners/vtb.jpg">
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
