@@ -370,3 +370,11 @@ def logout_view(request):
 
 def session_countdown_timer_view(request):
     return render(request, 'app/students/session_countdown_timer.html')
+
+
+def custom_page_not_found(request, exception):
+    return render(request, '/app/404.html', status=404)
+
+def custom_page_server_error(request):
+    return render(request, 'app/500.html', status=500)
+
