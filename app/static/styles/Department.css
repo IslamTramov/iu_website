@@ -79,7 +79,6 @@
 
 .list-group {
   width: min(760px, 90vw);
-  cursor: pointer;
 }
 
 .list-group-item {
