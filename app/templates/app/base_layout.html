@@ -124,16 +124,16 @@
               </ul>
             </li>
   
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
             <li class="nav-item dropdown">
               <img class="avatar" src="{{ user.avatar.url }}"> 
-              <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user }}</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDepartments">
-                <li> <a class="dropdown-item" href="/logout">Выйти</a> </li>
+                <li> <p class="dropdown-item" href="#">{{ user }}</p> </li>
+                <li> <a class="dropdown-item" href="{% url 'logout' %}">Выйти</a> </li>
               </ul>
             </li>
             {% else %}
-            <a href="/login" class="nav-link" role="button">Войти</a>
+            <a href="{% url 'login' %}" class="nav-link" role="button">Войти</a>
             {% endif %}
   
           </ul>
