@@ -125,7 +125,7 @@
   
             {% if request.user.is_authenticated %}
             <li class="nav-item dropdown">
-              <img class="avatar" src="{{ user.avatar.url }}"> 
+              <img class="rounded-circle" src="{{ user.avatar.url }}" style="width: 50px"> 
               <ul class="dropdown-menu" aria-labelledby="navbarDepartments">
                 <li> <p class="dropdown-item" href="#">{{ user }}</p> </li>
                 <li> <a class="dropdown-item" href="{% url 'logout' %}">Выйти</a> </li>
