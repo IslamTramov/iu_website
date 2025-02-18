@@ -6,25 +6,32 @@
 
 <div class="container">
   {% block content %}
-    <h1>{{department_info.name}}</h1>
-    <h1>{{department_info.full_name}}</h1>
+    <h1 class="name">{{department_info.name}}</h1>
+    <h1 class="fullname">{{department_info.full_name}}</h1>
 
     <hr class="my-4"></hr>
 
-    <h2>О кафедре</h2>
-    <p>{{department_info.description}}</p>
+    <div class="about-block">
+      <h2>О кафедре</h2>
+      <p>{{department_info.description}}</p>
+      <h2>Руководитель кафедры</h2>
+      <h3>{{department_info.head_name}}</h3>
+      <img src="{{department_info.head_image}}">
+    </div>
+
     <hr class="my-4"></hr>
-    <h2>Руководитель кафедры</h2>
-    <h3>{{department_info.head_name}}</h3>
-    <img src="{{department_info.head_image}}">
-    <h2>Направления подготовки</h2>
-    <ul class="list-group">
-      {% for direction in department_info.education_directions %}
-      <li class="list-group-item">
-        <h4>{{direction}}</h4>
-      </li>
-      {% endfor %}
-    </ul>
+
+    <h1 class="title">Направления подготовки</h1>
+
+    <div class="list-outer">
+      <ul class="list-group">
+        {% for direction in department_info.education_directions %}
+        <li class="list-group-item">
+          <h4>{{direction}}</h4>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
     
     {% for image in department_info.images %}
       <img src="{% static image %}" alt="test">
@@ -32,7 +39,7 @@
     {% endfor %}
 
 
-    <a href="{{department_info.website_link}}" class="btn btn-primary btn-lg" role="button">Сайт кафедры</a>
+    <a href="{{department_info.website_link}}" class="href-button" role="button">Сайт кафедры</a>
 
   {% endblock %}
 </div>

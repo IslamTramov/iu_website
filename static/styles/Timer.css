@@ -1,0 +1,12 @@
+#demo {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 994px) {
+
+  #demo {
+    font-size: 36px;
+  }
+
+}

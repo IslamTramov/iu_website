@@ -1,0 +1,35 @@
+{% extends "app/base_layout.html" %}
+
+{% block title %} Новости {% endblock %}
+
+{% block content %}
+<h1 class="text-center">Новости</h1>
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Id</th>
+      <th>Заголовок</th>
+      <th>Текст</th>
+      <th>Автор</th>
+      <th>Время создания</th>
+      <th>Действие</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for news_post in news_posts %}
+    <tr>
+      <td>{{ news_post.id }}</td>
+      <td>{{ news_post.title }}</td>
+      <td>{{ news_post.text }}</td>
+      <td>{{ news_post.author_id }}</td>
+      <td>{{ news_post.created_date }}</td>
+
+      <td>
+        <a href="{% url 'news_post_update' news_post.id %}" class="btn btn-warning">Изменить</a>
+        <a href="{% url 'news_post_delete' news_post.id %}" class="btn btn-danger">Удалить</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

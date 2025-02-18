@@ -1,0 +1,26 @@
+h1.form-title {
+  font-weight: 600;
+  font-size: 42px;
+  padding-bottom: 15px;
+}
+
+.post-form {
+  padding: 20px!important;
+}
+
+.post-form div {
+  padding: 8px 0px;
+  padding-top: 0px;
+}
+
+#image_field {
+  padding: 5px 0px;
+}
+
+@media screen and (max-width: 950px) {
+
+  h1.form-title {
+    font-size: 28px;
+  }
+
+}

@@ -4,12 +4,20 @@ import uuid
 
 # Create your models here.
 
+class custom_user(AbstractUser):
+    avatar = models.ImageField(blank=True, upload_to='user_avatars')
+
+    def __str__(self):
+        return self.username
+
+
 class news_post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.TextField()
     text = models.TextField()
-    author_id = models.UUIDField(editable=True)
-    creation_date = models.DateTimeField()
+    image = models.ImageField(blank=True, upload_to='post_images')
+    author = models.ForeignKey(custom_user, on_delete=models.CASCADE)
+    creation_date = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
         tokens = (
@@ -20,9 +28,3 @@ class news_post(models.Model):
         )
         return '\n'.join(tokens)
 
-
-class custom_user(AbstractUser):
-    avatar_url = models.CharField(blank=True, null=True)
-
-    def __str__(self):
-        return self.username

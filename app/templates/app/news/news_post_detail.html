@@ -1,22 +1,16 @@
 {% extends "app/base_layout.html" %}
 
-{% block title %} Новости {% endblock %}
-
 {% block content %}
-<h1 class="text-center news-title">Новости</h1>
-<h2 class="text-center news-description">Здесь мы публикуем новости о жизни нашего факультета</h2>
-{% for news_post in news_posts %}
-<div class="post">
-  {% if news_post.image %}
-    <img src="{{ news_post.image.url }}"> 
-  {% endif %}
-  <div class="info">
-    <div class="title">
-      <a href="{% url 'news_post_detail' news_post.id %}">
-        {{ news_post.title }}
-      </a>
-    </div>
-    <div class="text">{{ news_post.text|truncatechars:80 }}</div>
+<div class="detailed-post-outer">
+  <div class="navigator">
+    <img
+      class="back-button"
+      src="/static/images/arrow_right.svg"
+      onClick="javascript:history.back();"
+    >
+    <span class="caption">Новости</span>
+  </div>
+  <div class="detailed-post">
     <div class="author-info">
       {% if news_post.author.avatar %}
         {% if news_post.author.avatar.url %}
@@ -36,32 +30,11 @@
         {% endif %}
       </div>
     </div>
-
+    <div class="title">{{ news_post.title }}</div>
+    {% if news_post.image %}
+      <img src="{{ news_post.image.url }}">
+    {% endif %}
+    <div class="text">{{ news_post.text }}</div>
   </div>
 </div>
-
-{% endfor %}
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    {% if news_posts.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ news_posts.previous_page_number }}">Назад</a>
-      </li>
-    {% endif %}
-
-    {% for page_number in news_posts.paginator.page_range %}
-    <li class="page-item">
-      <a class="page-link" href="?page={{ page_number }}">{{page_number}}</a>
-    </li>
-    {% endfor %}
-
-    {% if news_posts.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ news_posts.next_page_number }}">Вперед</a>
-      </li>
-    {% endif %}
-  </ul>
-</nav>
-
 {% endblock %}

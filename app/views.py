@@ -1,34 +1,52 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 from .forms import news_post_form, login_form, register_form
 from .models import news_post
-import logging
+from .constants import departments
 
 def home_view(request):
-    return render(request, 'app/home.html')
+    return render(request, 'app/home.html', { "cards": departments })
 
 @login_required
 def news_post_create_view(request):
     form = news_post_form()
 
     if request.method == 'POST':
-        form = news_post_form(request.POST)
+        form = news_post_form(request.POST, request.FILES)
         
         if form.is_valid():
-            form.save()
-            # logger.warning(f'created new news_post: {form}')
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
             return redirect('news_posts')
 
     return render(request, 'app/news/news_post_form.html', {'form': form})
 
 
 def news_posts_view(request):
-    news_posts = news_post.objects.all()
-    logging.warning('news post view')
-    return render(request, 'app/news/news_posts.html', {'news_posts': news_posts})
+    news_posts = news_post.objects.all().order_by('creation_date__date', '-creation_date__time')
+
+    paginator = Paginator(news_posts, 5)
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'app/news/news_posts.html', {'news_posts': posts})
+
+
+def news_post_detail_view(request, id):
+    post = get_object_or_404(news_post, id=id)
+    return render(request, 'app/news/news_post_detail.html', {'news_post': post })
+
 
 def news_post_update_view(request, id):
     post = news_post.objects.get(id=id)
@@ -346,11 +364,17 @@ def login_view(request):
 
         
 def logout_view(request): 
-    if request.method == 'POST':
-        logout(request)
-
+    logout(request)
     return redirect('home')
 
 
 def session_countdown_timer_view(request):
     return render(request, 'app/students/session_countdown_timer.html')
+
+
+def custom_page_not_found(request, exception):
+    return render(request, '/app/404.html', status=404)
+
+def custom_page_server_error(request):
+    return render(request, 'app/500.html', status=500)
+
